@@ -20,7 +20,7 @@ public class Profissional implements Serializable {
 
     @Id
     @GeneratedValue
-    private Integer id = null;
+    private Integer idProfissional = null;
 
     /** Checks if the Transaction is activated. */
     private boolean activated = false;
@@ -28,6 +28,10 @@ public class Profissional implements Serializable {
     private String nome = null;
 
     private String cpf = null;
+    
+    private String email = null;
+    
+    private String especializacao = null;
 
     private String usuario = null;
 

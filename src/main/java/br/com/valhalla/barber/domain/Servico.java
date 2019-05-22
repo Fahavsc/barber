@@ -16,7 +16,7 @@ public class Servico {
 
     @Id
     @GeneratedValue
-    private Integer id = null;
+    private Integer idServico = null;
 
     private String nome = null;
 
@@ -25,7 +25,7 @@ public class Servico {
     private Integer tempo = null;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reserva")
+    @JoinColumn(name = "idItemReserva")
     private ItemReserva itemReserva = null;
 
 }

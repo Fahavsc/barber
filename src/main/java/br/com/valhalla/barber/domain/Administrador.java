@@ -14,13 +14,13 @@ import java.io.Serializable;
 @Data
 @Entity
 @NoArgsConstructor
-public class Cliente implements Serializable {
+public class Administrador implements Serializable {
 
-    private static final long serialVersionUID = 464575183124759944L;
+    private static final long serialVersionUID = 464575148289944L;
 
     @Id
     @GeneratedValue
-    private Integer idCliente = null;
+    private Integer idAdministrador = null;
 
     /** Checks if the Transaction is activated. */
     private boolean activated = false;
@@ -29,14 +29,11 @@ public class Cliente implements Serializable {
 
     private String cpf = null;
     
-    private Integer telefone = null;
-    
     private String email = null;
 
     private String usuario = null;
 
     private Integer senha = null;
 
-    
 
 }

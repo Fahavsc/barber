@@ -12,15 +12,15 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-public class ItemReserva {
+public class ItemProduto {
 
     @Id
     @GeneratedValue
-    private Integer idItemReserva = null;
+    private Integer idItemProduto = null;
 
     @OneToOne (fetch = FetchType.LAZY)
-    @JoinColumn(name = "idServico")
-    private Servico servico = null;
+    @JoinColumn(name = "idProduto")
+    private Produto produto = null;
 
     @OneToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "idReserva")
