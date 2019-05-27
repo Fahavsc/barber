@@ -1,11 +1,18 @@
 package br.com.valhalla.barber.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @AllArgsConstructor
 @Builder
@@ -15,7 +22,7 @@ import javax.persistence.*;
 public class Servico {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idServico = null;
 
     private String nome = null;
@@ -23,9 +30,7 @@ public class Servico {
     private Double valor = null;
 
     private Integer tempo = null;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idItemReserva")
-    private ItemReserva itemReserva = null;
-
+ 
+    @ManyToMany(mappedBy="servicos")
+    private List<Reserva> reservas = new ArrayList<>();
 }

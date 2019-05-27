@@ -1,14 +1,27 @@
 package br.com.valhalla.barber.domain;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 @AllArgsConstructor
 @Builder
@@ -18,27 +31,43 @@ import java.util.List;
 public class Reserva implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idReserva = null;
 
-    /** Checks if the Transaction is activated. */
-    private boolean activated = false;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idProfissional")
-    private Profissional profissional = null;
+   // private Profissional profissional = null; //Definir se será feita a implementação dessa forma ou com a entidade agenda
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idCliente")
+    @ManyToOne
+    @JoinColumn(name = "fk_id_cliente")
     private Cliente cliente = null;
 
     @Temporal(TemporalType.DATE)
     private Date data = null;
+    
+    @ManyToMany
+    @JoinTable(name="RESERVA_SERVICO",
+    		   joinColumns = @JoinColumn(name="fk_reserva"), //Nome da FK da tabela dessa entidade que ser colocada na tabela auxiliar
+    		   inverseJoinColumns = @JoinColumn(name="fk_servicos") //Nome da Fk da outra entidade que sera colocada na tabela auxiliar
+    		  )
+    List<Servico> servicos = new ArrayList<>();
 
     private Integer hora = null;
 
     private Double valorTotal = null;
 
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idItemReserva")
     private ItemReserva itemReserva = null;
