@@ -29,8 +29,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class Reserva implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
+	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idReserva = null;
 
