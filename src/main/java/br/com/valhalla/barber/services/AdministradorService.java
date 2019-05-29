@@ -17,9 +17,7 @@ public class AdministradorService {
 
     //Pesquisar todos
     public List<Administrador> findAll() {
-        List<Administrador> administradors = new ArrayList<>();
-        this.repository.findAll().forEach(administradors :: add);
-        return administradors;
+        return this.repository.findAll();
     }
 
     //Pesquisar por id
