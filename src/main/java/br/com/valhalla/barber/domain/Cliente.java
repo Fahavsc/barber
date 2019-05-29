@@ -24,9 +24,6 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idCliente = null;
-
-    /** Checks if the Transaction is activated. */
-    private boolean activated = false;
     
     private String nome = null;
     private String cpf = null;

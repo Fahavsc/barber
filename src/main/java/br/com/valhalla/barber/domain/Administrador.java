@@ -20,9 +20,6 @@ public class Administrador implements Serializable {
     @GeneratedValue
     private Integer idAdministrador = null;
 
-    /** Checks if the Transaction is activated. */
-    private boolean activated = false;
-
     private String nome = null;
 
     private String cpf = null;
