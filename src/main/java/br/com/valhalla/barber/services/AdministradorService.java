@@ -4,8 +4,6 @@ import br.com.valhalla.barber.domain.Administrador;
 import br.com.valhalla.barber.repositories.AdministradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
