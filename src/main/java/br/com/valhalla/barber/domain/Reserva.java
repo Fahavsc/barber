@@ -55,26 +55,4 @@ public class Reserva implements Serializable {
 
     private Double valorTotal = null;
 
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idItemReserva")
-    private ItemReserva itemReserva = null;
-    
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idItemProduto")
-    private ItemReserva itemProduto = null;
-
 }
