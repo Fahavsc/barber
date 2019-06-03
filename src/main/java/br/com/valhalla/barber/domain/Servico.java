@@ -24,8 +24,6 @@ public class Servico {
     private String nome = null;
 
     private Double valor = null;
-
-    private Integer tempo = null;
  
     @ManyToMany(mappedBy="servicos")
     private List<Reserva> reservas = new ArrayList<>();
