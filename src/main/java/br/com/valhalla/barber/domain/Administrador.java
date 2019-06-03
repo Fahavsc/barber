@@ -28,7 +28,7 @@ public class Administrador implements Serializable {
 
     private String usuario = null;
 
-    private Integer senha = null;
+    private String senha = null;
 
 
 }
