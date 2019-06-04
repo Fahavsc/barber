@@ -11,5 +11,4 @@ import br.com.valhalla.barber.domain.Servico;
 public interface ServicoRepository extends JpaRepository <Servico, Integer> {
     @Procedure(procedureName = "verServico")
     String nomeServico(@Param("id_reserva") int id);
-
 }

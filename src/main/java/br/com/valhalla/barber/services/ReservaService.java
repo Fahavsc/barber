@@ -1,8 +1,10 @@
 package br.com.valhalla.barber.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.valhalla.barber.domain.Profissional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +41,9 @@ public class ReservaService {
             
         }
         return fetchedReserva;
+    }
+
+    public Optional<Reserva> verificaReserva (Profissional profissional, Date data, Integer hora){
+        return repository.findByProfissionalAndDataAndHora(profissional, data, hora);
     }
 }

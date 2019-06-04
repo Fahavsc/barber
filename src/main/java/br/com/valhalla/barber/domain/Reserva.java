@@ -30,7 +30,7 @@ public class Reserva implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idReserva = null;
 
-   // private Profissional profissional = null; //Definir se será feita a implementação dessa forma ou com a entidade agenda
+    private Profissional profissional = null;
     
     @ManyToOne
     @JoinColumn(name = "fk_id_cliente")
