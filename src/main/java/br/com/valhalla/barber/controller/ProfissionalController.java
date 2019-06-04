@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/profissional")
+@CrossOrigin(value = "*")
 public class ProfissionalController {
 
     @Autowired
