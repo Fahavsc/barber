@@ -30,7 +30,7 @@ public class Profissional implements Serializable {
 
     private String usuario = null;
 
-    private Integer senha = null;
+    private String senha = null;
 
     //Luis - Vou pegar um projeto do trampo que tem o Calendar e vou utilizar para fazer o Day off
 
