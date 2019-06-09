@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
     private Integer telefone = null;
     private String email = null;
     private String usuario = null;
-    private Integer senha = null;
+    private String senha = null;
     
     @OneToMany(mappedBy="cliente")
     private List<Reserva> reservas = new ArrayList<>();
