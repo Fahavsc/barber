@@ -13,6 +13,8 @@ public class ProfissionalService {
     @Autowired
     private ProfissionalRepository repository;
 
+    public Optional<Profissional> findByNome(String nome){ return this.repository.findByNomeContaining(nome); }
+
     //Pesquisar todos
     public List<Profissional> findAll() {
         return this.repository.findAll();

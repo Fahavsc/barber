@@ -14,4 +14,6 @@ public interface ReservaRepository extends JpaRepository <Reserva, Integer> {
 
     Optional<Reserva> findByProfissionalAndDataAndHora(Profissional profissional, Date date, Integer hora);
 
+    Optional<Reserva> findByProfissional(Profissional profissional);
+
 }

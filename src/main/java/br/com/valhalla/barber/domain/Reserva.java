@@ -15,6 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +34,8 @@ public class Reserva implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idReserva = null;
 
+	@ManyToOne
+    @JoinColumn(name = "fk_id_profissional")
     private Profissional profissional = null;
     
     @ManyToOne
@@ -38,7 +44,8 @@ public class Reserva implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date data = null;
-    
+
+    //@JsonBackReference
     @ManyToMany
     @JoinTable(name="RESERVA_SERVICO",
     		   joinColumns = @JoinColumn(name="fk_reserva"), //Nome da FK da tabela dessa entidade que ser colocada na tabela auxiliar

@@ -21,6 +21,10 @@ public class ReservaService {
         return this.repository.findAll();
     }
 
+    //Pesquisar por Profissional
+    public Optional<Reserva> findByProfissional(Profissional profissional) {
+        return this.repository.findByProfissional(profissional);}
+
     //Pesquisar por id
     public Optional<Reserva> findById(Integer id) {
         return this.repository.findById(id);
