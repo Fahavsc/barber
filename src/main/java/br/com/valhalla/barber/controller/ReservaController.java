@@ -8,10 +8,13 @@ import br.com.valhalla.barber.domain.Servico;
 import br.com.valhalla.barber.services.ClienteService;
 import br.com.valhalla.barber.services.ProfissionalService;
 import br.com.valhalla.barber.services.ReservaService;
+import br.com.valhalla.barber.services.ServicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +32,9 @@ public class ReservaController {
 
     @Autowired
     private ClienteService clienteService;
+
+    @Autowired
+    private ServicoService servicoService;
 
     @GetMapping
     public List<Reserva> getAll() {
@@ -60,6 +66,7 @@ public class ReservaController {
 
     @PostMapping
     public ResponseEntity post(@RequestBody Reserva reserva) {
+        //Verifica se será possível realizar a reserva, se ja existir reserva naquele horario lança um http status
         Optional<Reserva> fetchedReserva =
                 service.verificaReserva(reserva.getProfissional(), reserva.getData(), reserva.getHora());
         if (fetchedReserva.isPresent()) {
@@ -76,11 +83,20 @@ public class ReservaController {
         reserva.setProfissional(profissional.get());
         reserva.setCliente(cliente.get());
 
+        //Busca a estrutura dos servicos no banco
+        List<Servico> fetchedServicos = new ArrayList<>();
+        for ( Servico serv : reserva.getServicos() ) { ;
+            fetchedServicos.add(servicoService.findById(serv.getIdServico()).get());
+        }
+        reserva.setServicos(fetchedServicos);
+
+        //Realiza o calculo do valor total
         Double total = 0.0;
-        for(Servico serv : fetchedReserva.get().getServicos()){
+        for(Servico serv : reserva.getServicos()){
             total += serv.getValor();
         }
-        fetchedReserva.get().setValorTotal(total);
+        reserva.setValorTotal(total);
+
         return new ResponseEntity(service.save(reserva), HttpStatus.CREATED);
 
     }

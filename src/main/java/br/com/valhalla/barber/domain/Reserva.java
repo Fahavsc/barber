@@ -56,5 +56,4 @@ public class Reserva implements Serializable {
     private Integer hora = null;
 
     private Double valorTotal = null;
-
 }
