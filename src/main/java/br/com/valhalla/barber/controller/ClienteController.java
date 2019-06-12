@@ -17,6 +17,8 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
+    @Autowired LoginController loginController;
+
     @GetMapping
     public List<Cliente> getAll() {
         return service.findAll();
@@ -35,6 +37,7 @@ public class ClienteController {
 
     @PostMapping
     public Cliente post(@RequestBody Cliente cliente) {
+        loginController.post(cliente.getUsuario(), cliente.getSenha(), "cliente");
         return this.service.save(cliente);
     }
 

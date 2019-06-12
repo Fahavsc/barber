@@ -18,6 +18,8 @@ public class ProfissionalController {
     @Autowired
     private ProfissionalService service;
 
+    @Autowired LoginController loginController;
+
     @GetMapping
     public List<Profissional> getAll() {
         return service.findAll();
@@ -36,6 +38,7 @@ public class ProfissionalController {
 
     @PostMapping
     public Profissional post(@RequestBody Profissional profissional) {
+        loginController.post(profissional.getUsuario(), profissional.getSenha(),"profissional");
         return this.service.save(profissional);
     }
 
