@@ -12,6 +12,7 @@ import java.util.Optional;
 @CrossOrigin(value = "*")
 @RestController
 @RequestMapping("/servico")
+@CrossOrigin(value = "*")
 public class ServicoController {
 
     @Autowired

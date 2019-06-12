@@ -32,9 +32,14 @@ public class Cliente implements Serializable {
     private Integer telefone = null;
     private String email = null;
     private String usuario = null;
+<<<<<<< HEAD
     private Integer senha = null;
 
     @JsonIgnore
+=======
+    private String senha = null;
+    
+>>>>>>> ff870353fedca7308e6b34c2bd1a92eceb821ee5
     @OneToMany(mappedBy="cliente")
     private List<Reserva> reservas = new ArrayList<>();
 }
