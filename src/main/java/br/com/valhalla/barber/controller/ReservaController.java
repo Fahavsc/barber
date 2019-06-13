@@ -115,4 +115,10 @@ public class ReservaController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PutMapping("/delete/{reservaId}")
+    public ResponseEntity delete (@PathVariable Integer reservaId ){
+         Optional<Reserva> reserva = service.deleteById(reservaId);
+         return new ResponseEntity(HttpStatus.OK);
+    }
 }
