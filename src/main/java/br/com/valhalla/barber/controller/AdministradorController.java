@@ -16,6 +16,8 @@ public class AdministradorController {
     @Autowired
     private AdministradorService service;
 
+    @Autowired LoginController loginController;
+
     @GetMapping
     public List<Administrador> getAll() {
         return service.findAll();
@@ -34,6 +36,7 @@ public class AdministradorController {
 
     @PostMapping
     public Administrador post(@RequestBody Administrador administrador) {
+        loginController.post(administrador.getUsuario(), administrador.getSenha(),"administrador");
         return this.service.save(administrador);
     }
 
