@@ -23,7 +23,7 @@ public class ReservaService {
     }
 
     //Pesquisar por Profissional
-    public Optional<Reserva> findByProfissional(Profissional profissional) {
+    public List<Reserva> findByProfissional(Profissional profissional) {
         return this.repository.findByProfissional(profissional);}
 
     public List<Reserva> findByCliente(Cliente cliente) {

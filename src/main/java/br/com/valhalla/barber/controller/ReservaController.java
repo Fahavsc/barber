@@ -52,28 +52,26 @@ public class ReservaController {
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping (value = "/nome/{nome}", method = RequestMethod.GET)
-    public ResponseEntity<Reserva> buscarPorProfissional(@PathVariable("nome") String nome){
-        Optional<Profissional> profissional = profissionalService.findByUsuario(nome);
-        if (!profissional.isPresent())
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        Optional<Reserva> reserva = service.findByProfissional(profissional.get());
-        if (!reserva.isPresent())
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-
-        return new ResponseEntity(service.save(reserva.get()), HttpStatus.OK);
-    }
+//    @RequestMapping (value = "/nome/{nome}", method = RequestMethod.GET)
+//    public ResponseEntity<Reserva> buscarPorProfissional(@PathVariable("nome") String nome){
+//        Optional<Profissional> profissional = profissionalService.findByUsuario(nome);
+//        if (!profissional.isPresent())
+//            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+//        Optional<Reserva> reserva = service.findByProfissional(profissional.get());
+//        if (!reserva.isPresent())
+//            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+//
+//        return new ResponseEntity(service.save(reserva.get()), HttpStatus.OK);
+//    }
 
     @RequestMapping (value = "/profissional/usuario/{usuario}", method = RequestMethod.GET)
-    public ResponseEntity<Reserva> buscarPorUsuarioProfissional(@PathVariable("usuario") String usuario){
+    public ResponseEntity<List<Reserva>> buscarPorUsuarioProfissional(@PathVariable("usuario") String usuario){
         Optional<Profissional> profissional = profissionalService.findByUsuario(usuario);
         if (!profissional.isPresent())
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        Optional<Reserva> reserva = service.findByProfissional(profissional.get());
-        if (!reserva.isPresent())
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        List<Reserva> reserva = service.findByProfissional(profissional.get());
 
-        return new ResponseEntity(service.save(reserva.get()), HttpStatus.OK);
+        return new ResponseEntity(reserva, HttpStatus.OK);
     }
 
     @RequestMapping (value = "/cliente/usuario/{usuario}", method = RequestMethod.GET)
