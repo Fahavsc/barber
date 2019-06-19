@@ -77,13 +77,13 @@ public class ReservaController {
     }
 
     @RequestMapping (value = "/cliente/usuario/{usuario}", method = RequestMethod.GET)
-    public ResponseEntity<Reserva> buscarPorUsuarioCliente(@PathVariable("usuario") String usuario){
+    public ResponseEntity<List<Reserva>> buscarPorUsuarioCliente(@PathVariable("usuario") String usuario){
         Optional<Cliente> cliente = clienteService.findByUsuario(usuario);
         if (!cliente.isPresent())
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         List<Reserva> reserva = service.findByCliente(cliente.get());
 
-        return new ResponseEntity(service.save(reserva.get()), HttpStatus.OK);
+        return new ResponseEntity(reserva, HttpStatus.OK);
     }
 
     @PostMapping
