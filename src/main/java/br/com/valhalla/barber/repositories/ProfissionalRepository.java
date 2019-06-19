@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProfissionalRepository extends JpaRepository <Profissional, Integer> {
-    Optional<Profissional> findByNomeContaining(String nome);
+    Optional<Profissional> findByUsuarioContaining(String usuario);
 }

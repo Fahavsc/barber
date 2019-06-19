@@ -54,7 +54,19 @@ public class ReservaController {
 
     @RequestMapping (value = "/nome/{nome}", method = RequestMethod.GET)
     public ResponseEntity<Reserva> buscarPorProfissional(@PathVariable("nome") String nome){
-        Optional<Profissional> profissional = profissionalService.findByNome(nome);
+        Optional<Profissional> profissional = profissionalService.findByUsuario(nome);
+        if (!profissional.isPresent())
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        Optional<Reserva> reserva = service.findByProfissional(profissional.get());
+        if (!reserva.isPresent())
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity(service.save(reserva.get()), HttpStatus.OK);
+    }
+
+    @RequestMapping (value = "/usuario/{usuario}", method = RequestMethod.GET)
+    public ResponseEntity<Reserva> buscarPorCliente(@PathVariable("usuario") String usuario){
+        Optional<Profissional> profissional = profissionalService.findByUsuario(usuario);
         if (!profissional.isPresent())
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         Optional<Reserva> reserva = service.findByProfissional(profissional.get());
