@@ -96,7 +96,7 @@ public class ReservaController {
         if (!profissional.isPresent()) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        Optional<Cliente> cliente = clienteService.findById(reserva.getCliente().getIdCliente());
+        Optional<Cliente> cliente = clienteService.findByUsuario(reserva.getCliente().getUsuario());
         if(!cliente.isPresent()){
             return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }
