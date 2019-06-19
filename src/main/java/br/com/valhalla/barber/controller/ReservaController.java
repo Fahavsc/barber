@@ -81,9 +81,7 @@ public class ReservaController {
         Optional<Cliente> cliente = clienteService.findByUsuario(usuario);
         if (!cliente.isPresent())
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        Optional<Reserva> reserva = service.findByCliente(cliente.get());
-        if (!reserva.isPresent())
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        List<Reserva> reserva = service.findByCliente(cliente.get());
 
         return new ResponseEntity(service.save(reserva.get()), HttpStatus.OK);
     }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.valhalla.barber.domain.Reserva;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -17,6 +18,6 @@ public interface ReservaRepository extends JpaRepository <Reserva, Integer> {
 
     Optional<Reserva> findByProfissional(Profissional profissional);
 
-    Optional<Reserva> findByCliente(Cliente cliente);
+    List<Reserva> findByCliente(Cliente cliente);
 
 }

@@ -26,7 +26,7 @@ public class ReservaService {
     public Optional<Reserva> findByProfissional(Profissional profissional) {
         return this.repository.findByProfissional(profissional);}
 
-    public Optional<Reserva> findByCliente(Cliente cliente) {
+    public List<Reserva> findByCliente(Cliente cliente) {
         return this.repository.findByCliente(cliente);}
 
     //Pesquisar por id
