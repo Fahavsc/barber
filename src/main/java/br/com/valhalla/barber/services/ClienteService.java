@@ -13,6 +13,8 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
+    public Optional<Cliente> findByUsuario(String usuario){ return this.repository.findByUsuarioContaining(usuario); }
+
     //Pesquisar todos
     public List<Cliente> findAll() {
         return this.repository.findAll();

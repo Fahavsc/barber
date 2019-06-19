@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.valhalla.barber.domain.Cliente;
 import br.com.valhalla.barber.domain.Profissional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,9 @@ public class ReservaService {
     //Pesquisar por Profissional
     public Optional<Reserva> findByProfissional(Profissional profissional) {
         return this.repository.findByProfissional(profissional);}
+
+    public Optional<Reserva> findByCliente(Cliente cliente) {
+        return this.repository.findByCliente(cliente);}
 
     //Pesquisar por id
     public Optional<Reserva> findById(Integer id) {

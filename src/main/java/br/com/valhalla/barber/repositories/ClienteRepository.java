@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import br.com.valhalla.barber.domain.Cliente;
 
+import java.util.Optional;
+
 @Repository
 public interface ClienteRepository extends JpaRepository <Cliente, Integer> {
+
+    Optional<Cliente> findByUsuarioContaining(String usuario);
 
 }
